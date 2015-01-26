@@ -1,6 +1,11 @@
 package org.ngsutils.txtutils;
 
 import org.ngsutils.cmdlinej.MainBuilder;
+import org.ngsutils.txtutils.tab.TabLess;
+import org.ngsutils.txtutils.tab.TabView;
+import org.ngsutils.txtutils.text.Missing;
+import org.ngsutils.txtutils.text.Overlap;
+import org.ngsutils.txtutils.text.Union;
 
 
 public class Main {
@@ -9,6 +14,7 @@ public class Main {
 			.setProgName("txtutils")
 			.setUsage("txtutils - Text/tab delimited utilities\n\nUsage: txtutils cmd [options]")
 			.addCommand(TabView.class)
+			.addCommand(TabLess.class)
 			.addCommand(Overlap.class)
 			.addCommand(Missing.class)
 			.addCommand(Union.class);

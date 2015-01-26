@@ -1,12 +1,8 @@
-package org.ngsutils.txtutils;
+package org.ngsutils.txtutils.tab;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.ngsutils.cmdlinej.annotation.Command;
 import org.ngsutils.cmdlinej.annotation.Option;
@@ -20,8 +16,10 @@ public class TabView extends AbstractCommand {
 	private int lineCount;
 	private int min;
 	private int max;
+	private int scrollBack = 10000;
 	private String delim;
 
+	
 	@UnnamedArg(name="FILE", defaultValue="-")
 	public void setFilename(String filename) {
 		this.filename = filename;
@@ -32,7 +30,7 @@ public class TabView extends AbstractCommand {
 		this.delim = delim;
 	}
 	
-	@Option(charName="l", desc="Lines to read to estimate column sizes", defaultValue="1000")
+	@Option(charName="l", desc="Lines to read to estimate column sizes", defaultValue="100")
 	public void setLineCount(int lines) {
 		this.lineCount = lines;
 	}
@@ -47,6 +45,11 @@ public class TabView extends AbstractCommand {
 		this.max = max;
 	}
 	
+	@Option(name="buf", desc="Scroll back buffer size", defaultValue="10000")
+	public void setScrollBack(int val) {
+		this.scrollBack = val;
+	}
+	
 	@Override
 	public void exec() throws Exception {
 		InputStream is = System.in;
@@ -54,60 +57,63 @@ public class TabView extends AbstractCommand {
 			is = new FileInputStream(filename);
 		}
 		
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		String line = reader.readLine();
+		StreamingLineSource src = new StreamingLineSource(is, Math.max(scrollBack, lineCount));
 		
-		while (line.startsWith("#")) {
-			line = reader.readLine();
-		}
-		
-		int[] colmax = new int[line.split("\t").length];
-		
-		for (int i=0; i< colmax.length; i++) {
-			colmax[i] = min;
-		}
-		
-		List<String[]> bufferedCols = new ArrayList<String[]>();
-		
-		while (line != null && bufferedCols.size() < lineCount) {
-			String[] cols = line.split("\t");
-			bufferedCols.add(cols);
+		int[] colmax = null;
+		String[] header= null;
+
+		for (int i=0; i<lineCount; i++) {
+			String line = src.getNextLine();
+			if (line.startsWith("#")) {
+				continue;
+			}
+			if (colmax == null) {
+				colmax = new int[line.split("\t").length];
+				for (int j=0; j< colmax.length; j++) {
+					colmax[j] = min;
+				}
+			}
 			
-			for (int i=0; i<cols.length; i++) {
-				if (cols[i].length() > colmax[i]) {
+			String[] cols = line.split("\t");
+			if (header == null) {
+				header = cols;
+			}
+			for (int j=0; j<cols.length; j++) {
+				if (cols[j].length() > colmax[j]) {
 					if (max > -1) {
-						colmax[i] = Math.min(max, cols[i].length());
+						colmax[j] = Math.min(max, cols[j].length());
 					} else {
-						colmax[i] = cols[i].length();
+						colmax[j] = cols[j].length();
 					}
 				}
 			}
-			line = reader.readLine();
+
 		}
 		
-		for (String[] cols: bufferedCols) {
-			writeCols(cols, colmax);
-		}
+		src.setCurLine(0);
+		String line = src.getNextLine();
 
-		while (line != null) {
+		while (line != null && !System.out.checkError()) {
 			String[] cols = line.split("\t");
 			writeCols(cols, colmax);
-			line = reader.readLine();
+			line = src.getNextLine();
 		}
 		
-		if (!is.equals(System.in)) {
-			reader.close();
-		}
+		src.close();
 	}
-
+	
 	private void writeCols(String[] cols, int[] colmax) {
 		for (int i=0; i<cols.length; i++) {
 			if (i > 0) {
 				out.print(" "+delim+" ");
 			}
 			String s = cols[i];
-			while (s.length() < colmax[i]) {
-				s += " ";
+			if (s.length() > colmax[i]) {
+				s = s.substring(0, colmax[i]-1)+"$";
+			} else {
+				while (s.length() < colmax[i]) {
+					s += " ";
+				}
 			}
 			out.print(s);
 		}
