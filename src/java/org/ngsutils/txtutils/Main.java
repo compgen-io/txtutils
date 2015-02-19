@@ -6,6 +6,7 @@ import org.ngsutils.txtutils.tab.TabView;
 import org.ngsutils.txtutils.text.Missing;
 import org.ngsutils.txtutils.text.Overlap;
 import org.ngsutils.txtutils.text.Union;
+import org.ngsutils.txtutils.text.Venn;
 
 
 public class Main {
@@ -17,6 +18,7 @@ public class Main {
 			.addCommand(TabLess.class)
 			.addCommand(Overlap.class)
 			.addCommand(Missing.class)
+			.addCommand(Venn.class)
 			.addCommand(Union.class);
 		
 		if (args.length == 0) {

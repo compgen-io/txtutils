@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="873.684px"
+   height="550px"
+   viewBox="0 0 873.684 550"
+   enable-background="new 0 0 873.684 550"
+   xml:space="preserve"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Venn2.svg"><metadata
+     id="metadata3634"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs3632" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1840"
+     inkscape:window-height="1077"
+     id="namedview3630"
+     showgrid="false"
+     inkscape:zoom="1.0690364"
+     inkscape:cx="455.55045"
+     inkscape:cy="237.58313"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_1" /><path
+     opacity="0.5"
+     fill="#2E3192"
+     d="M522.909,118.709c-36.289,0-69.59,12.78-95.66,34.078  c33.967,27.748,55.656,69.958,55.656,117.238s-21.689,89.49-55.656,117.238c26.07,21.298,59.371,34.078,95.66,34.078  c83.569,0,151.316-67.747,151.316-151.316S606.478,118.709,522.909,118.709z"
+     id="path3608" /><path
+     opacity="0.5"
+     fill="#C1272D"
+     d="M371.593,270.025c0-47.28,21.689-89.49,55.655-117.238  c-26.07-21.297-59.371-34.078-95.66-34.078c-83.568,0-151.315,67.747-151.315,151.316s67.747,151.316,151.315,151.316  c36.289,0,69.59-12.78,95.66-34.078C393.283,359.516,371.593,317.306,371.593,270.025z"
+     id="path3610" /><path
+     opacity="0.7"
+     fill="#662D91"
+     d="M482.905,270.025c0-47.28-21.689-89.49-55.656-117.238  c-33.966,27.748-55.655,69.958-55.655,117.238s21.689,89.49,55.655,117.238C461.215,359.516,482.905,317.306,482.905,270.025z"
+     id="path3612" /><path
+     fill="none"
+     stroke="#000000"
+     stroke-width="2"
+     stroke-miterlimit="10"
+     d="M522.909,118.709  c-36.289,0-69.59,12.781-95.66,34.078c33.967,27.748,55.656,69.958,55.656,117.238s-21.689,89.49-55.656,117.238  c26.07,21.298,59.371,34.078,95.66,34.078c83.569,0,151.316-67.747,151.316-151.316S606.478,118.709,522.909,118.709z"
+     id="path3614" /><path
+     fill="none"
+     stroke="#000000"
+     stroke-width="2"
+     stroke-miterlimit="10"
+     d="M371.593,270.025  c0-47.28,21.689-89.49,55.655-117.238c-26.07-21.297-59.371-34.078-95.66-34.078c-83.568,0-151.315,67.747-151.315,151.316  s67.747,151.316,151.315,151.316c36.289,0,69.59-12.78,95.66-34.078C393.283,359.516,371.593,317.306,371.593,270.025z"
+     id="path3616" /><text
+     font-size="18"
+     id="text3618"
+     x="247.65929"
+     y="460.9082"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:MyriadPro-Regular;-inkscape-font-specification:'MyriadPro-Regular, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     sodipodi:linespacing="125%">$$LABELA$$</text>
+<text
+     font-size="18"
+     id="text3620"
+     x="603.37109"
+     y="460.9082"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:MyriadPro-Regular;-inkscape-font-specification:'MyriadPro-Regular, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     sodipodi:linespacing="125%">$$LABELB$$</text>
+<text
+     font-size="18"
+     id="text3622"
+     x="427.51709"
+     y="275.30859"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:MyriadPro-Regular;-inkscape-font-specification:'MyriadPro-Regular, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     sodipodi:linespacing="125%">$$AB$$</text>
+<text
+     font-size="18"
+     id="text3624"
+     x="585.67328"
+     y="275.30859"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:MyriadPro-Regular;-inkscape-font-specification:'MyriadPro-Regular, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     sodipodi:linespacing="125%">$$B$$</text>
+<text
+     font-size="18"
+     id="text3626"
+     x="278.40671"
+     y="275.30859"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:MyriadPro-Regular;-inkscape-font-specification:'MyriadPro-Regular, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     sodipodi:linespacing="125%">$$A$$</text>
+<text
+     font-size="24"
+     id="text3628"
+     x="425.61798"
+     y="86.045906"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:125%;font-family:MyriadPro-Regular;-inkscape-font-specification:'MyriadPro-Regular, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+     sodipodi:linespacing="125%">$$TITLE$$</text>
+</svg>
