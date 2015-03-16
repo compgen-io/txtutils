@@ -1,4 +1,4 @@
-package org.ngsutils.txtutils.text;
+package io.compgen.txtutils.text;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -10,11 +10,11 @@ import org.ngsutils.cmdlinej.annotation.Command;
 import org.ngsutils.cmdlinej.annotation.UnnamedArg;
 import org.ngsutils.cmdlinej.impl.AbstractCommand;
 
-@Command(name="missing", desc="Find the lines in file1, but not file2 (etc...)", category="text")
-public class Missing extends AbstractCommand {
+@Command(name="union", desc="Merge together files", category="text")
+public class Union extends AbstractCommand {
 	private String[] filenames;
 
-	@UnnamedArg(name="FILE1 FILE2...", required=true)
+	@UnnamedArg(name="FILE1 FILE2...")
 	public void setFilename(String[] filenames) {
 		this.filenames = filenames;
 	}
@@ -28,11 +28,7 @@ public class Missing extends AbstractCommand {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String s = line.replaceAll("\n$", "");
-				if (i == 0) {
-					known.add(s);
-				} else {
-					known.remove(s);
-				}
+				known.add(s);
 			}
 			reader.close();
 		}

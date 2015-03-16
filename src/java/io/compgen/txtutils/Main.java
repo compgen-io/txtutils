@@ -1,12 +1,13 @@
-package org.ngsutils.txtutils;
+package io.compgen.txtutils;
+
+import io.compgen.txtutils.tab.TabLess;
+import io.compgen.txtutils.tab.TabView;
+import io.compgen.txtutils.text.Missing;
+import io.compgen.txtutils.text.Overlap;
+import io.compgen.txtutils.text.Union;
+import io.compgen.txtutils.text.Venn;
 
 import org.ngsutils.cmdlinej.MainBuilder;
-import org.ngsutils.txtutils.tab.TabLess;
-import org.ngsutils.txtutils.tab.TabView;
-import org.ngsutils.txtutils.text.Missing;
-import org.ngsutils.txtutils.text.Overlap;
-import org.ngsutils.txtutils.text.Union;
-import org.ngsutils.txtutils.text.Venn;
 
 
 public class Main {

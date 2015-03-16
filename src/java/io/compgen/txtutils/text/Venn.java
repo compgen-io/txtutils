@@ -1,4 +1,4 @@
-package org.ngsutils.txtutils.text;
+package io.compgen.txtutils.text;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

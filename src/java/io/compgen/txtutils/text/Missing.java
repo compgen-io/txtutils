@@ -1,22 +1,20 @@
-package org.ngsutils.txtutils.text;
+package io.compgen.txtutils.text;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.ngsutils.cmdlinej.annotation.Command;
 import org.ngsutils.cmdlinej.annotation.UnnamedArg;
 import org.ngsutils.cmdlinej.impl.AbstractCommand;
 
-@Command(name="overlap", desc="Find the overlap in files", category="text")
-public class Overlap extends AbstractCommand {
+@Command(name="missing", desc="Find the lines in file1, but not file2 (etc...)", category="text")
+public class Missing extends AbstractCommand {
 	private String[] filenames;
 
-	@UnnamedArg(name="FILE1 FILE2...")
+	@UnnamedArg(name="FILE1 FILE2...", required=true)
 	public void setFilename(String[] filenames) {
 		this.filenames = filenames;
 	}
@@ -24,24 +22,22 @@ public class Overlap extends AbstractCommand {
 	@Override
 	public void exec() throws Exception {
 		Set<String> known = new HashSet<String>();
-		List<String> working = new ArrayList<String>();
 		
 		for (int i=0; i<filenames.length; i++) {
-			working.clear();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filenames[i])));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String s = line.replaceAll("\n$", "");
-				if (i == 0 || known.contains(s)) {
-					working.add(s);
+				if (i == 0) {
+					known.add(s);
+				} else {
+					known.remove(s);
 				}
 			}
 			reader.close();
-			known.clear();
-			known.addAll(working);
 		}
 		
-		for (String l:working) {
+		for (String l:known) {
 			System.out.println(l);
 		}
 	}

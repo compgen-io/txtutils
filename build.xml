@@ -22,9 +22,9 @@
 	<target name="jar" depends="compile, git.revision">
         <copy file="LICENSE" todir="${build.dir}/classes/"/>
         <copy file="INCLUDES" todir="${build.dir}/classes/"/>
-        <copy file="${src.dir}/images/Venn2.svg" todir="${build.dir}/classes/org/ngsutils/txtutils/text"/>
-        <copy file="${src.dir}/images/Venn3.svg" todir="${build.dir}/classes/org/ngsutils/txtutils/text"/>
-        <copy file="${src.dir}/images/Venn4.svg" todir="${build.dir}/classes/org/ngsutils/txtutils/text"/>
+        <copy file="${src.dir}/images/Venn2.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
+        <copy file="${src.dir}/images/Venn3.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
+        <copy file="${src.dir}/images/Venn4.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
         <delete file="${build.dir}/classes/VERSION"/>
  		<echo file="${build.dir}/classes/VERSION" message="${ant.project.name}-${version}-${repository.version}"/>
 
@@ -33,7 +33,7 @@
         <jar destfile="${dist.dir}/${ant.project.name}-${version}-${repository.version}.jar" basedir="${build.dir}/classes"/>
 	    <jarjar jarfile="${dist.dir}/${ant.project.name}.jar.tmp">
             <manifest>
-                <attribute name="Main-Class" value="org.ngsutils.txtutils.Main"/>
+                <attribute name="Main-Class" value="io.compgen.txtutils.Main"/>
             </manifest>
             <zipfileset src="${lib.dir}/cmdlinej-0.1-363445c.jar"/>
 	        <zipfileset src="${lib.dir}/lanterna-2.1.7.jar"/>

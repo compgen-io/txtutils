@@ -1,4 +1,4 @@
-package org.ngsutils.txtutils.tab;
+package io.compgen.txtutils.tab;
 
 import java.io.FileInputStream;
 import java.io.IOException;
