@@ -1,14 +1,14 @@
 package io.compgen.txtutils.tab;
 
+import io.compgen.annotation.Command;
+import io.compgen.annotation.Option;
+import io.compgen.annotation.UnnamedArg;
+import io.compgen.impl.AbstractCommand;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-
-import org.ngsutils.cmdlinej.annotation.Command;
-import org.ngsutils.cmdlinej.annotation.Option;
-import org.ngsutils.cmdlinej.annotation.UnnamedArg;
-import org.ngsutils.cmdlinej.impl.AbstractCommand;
 
 import com.googlecode.lanterna.TerminalFacade;
 import com.googlecode.lanterna.input.Key;

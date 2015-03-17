@@ -1,5 +1,9 @@
 package io.compgen.txtutils.text;
 
+import io.compgen.annotation.Command;
+import io.compgen.annotation.UnnamedArg;
+import io.compgen.impl.AbstractCommand;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -7,10 +11,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import org.ngsutils.cmdlinej.annotation.Command;
-import org.ngsutils.cmdlinej.annotation.UnnamedArg;
-import org.ngsutils.cmdlinej.impl.AbstractCommand;
 
 @Command(name="overlap", desc="Find the overlap in files", category="text")
 public class Overlap extends AbstractCommand {

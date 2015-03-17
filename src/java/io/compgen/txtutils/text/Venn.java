@@ -1,17 +1,17 @@
 package io.compgen.txtutils.text;
 
+import io.compgen.annotation.Command;
+import io.compgen.annotation.Option;
+import io.compgen.annotation.UnnamedArg;
+import io.compgen.exceptions.CommandArgumentException;
+import io.compgen.impl.AbstractOutputCommand;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.ngsutils.cmdlinej.annotation.Command;
-import org.ngsutils.cmdlinej.annotation.Option;
-import org.ngsutils.cmdlinej.annotation.UnnamedArg;
-import org.ngsutils.cmdlinej.exceptions.CommandArgumentException;
-import org.ngsutils.cmdlinej.impl.AbstractOutputCommand;
 
 @Command(name="venn", desc="Create Venn diagrams and counts", category="text")
 public class Venn extends AbstractOutputCommand {
@@ -22,8 +22,8 @@ public class Venn extends AbstractOutputCommand {
 	
 	@UnnamedArg(name="FILE1 FILE2 {FILE3} {FILE4}", required=true)
 	public void setFilename(String[] filenames) throws CommandArgumentException {
-		if (filenames.length > 4 || filenames.length < 2) {
-			throw new CommandArgumentException("You must specify between 2 and 4 files.");
+		if (filenames.length < 2) {
+			throw new CommandArgumentException("You must specify at least 2 files.");
 
 		}
 		this.filenames = filenames;
@@ -46,6 +46,12 @@ public class Venn extends AbstractOutputCommand {
 	
 	@Override
 	public void exec() throws Exception {
+		
+		if (svg && filenames.length>4) {
+			throw new CommandArgumentException("Too many files! Only 2-4 files compatible with SVG output.");
+	
+		}
+		
 		Map<String, Integer> vals = new HashMap<String, Integer>();
 		if (names != null && names.length != filenames.length) {
 			throw new CommandArgumentException("The 'names' option must be the same length as the number of files");
@@ -96,7 +102,7 @@ public class Venn extends AbstractOutputCommand {
 			strings.put(key, ""+counts[i]);
 		}
 		
-		BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("org/ngsutils/txtutils/text/Venn"+filenames.length+".svg")));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("io/compgen/txtutils/text/Venn"+filenames.length+".svg")));
 		String line;
 		while ((line = reader.readLine()) != null) {
 			line = line.replaceAll("\\$\\$TITLE\\$\\$", title);

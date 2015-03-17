@@ -1,13 +1,13 @@
 package io.compgen.txtutils.tab;
 
+import io.compgen.annotation.Command;
+import io.compgen.annotation.Option;
+import io.compgen.annotation.UnnamedArg;
+import io.compgen.impl.AbstractCommand;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-
-import org.ngsutils.cmdlinej.annotation.Command;
-import org.ngsutils.cmdlinej.annotation.Option;
-import org.ngsutils.cmdlinej.annotation.UnnamedArg;
-import org.ngsutils.cmdlinej.impl.AbstractCommand;
 
 @Command(name="view", desc="View tab-delimited files", category="tab")
 public class TabView extends AbstractCommand {
