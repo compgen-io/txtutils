@@ -1,10 +1,11 @@
 package io.compgen.txtutils.text;
 
-import io.compgen.annotation.Command;
-import io.compgen.annotation.Option;
-import io.compgen.annotation.UnnamedArg;
-import io.compgen.exceptions.CommandArgumentException;
-import io.compgen.impl.AbstractOutputCommand;
+import io.compgen.cmdline.annotation.Command;
+import io.compgen.cmdline.annotation.Exec;
+import io.compgen.cmdline.annotation.Option;
+import io.compgen.cmdline.annotation.UnnamedArg;
+import io.compgen.cmdline.exceptions.CommandArgumentException;
+import io.compgen.cmdline.impl.AbstractOutputCommand;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -20,11 +21,10 @@ public class Venn extends AbstractOutputCommand {
 	private String title = null;
 	private String[] names = null;
 	
-	@UnnamedArg(name="FILE1 FILE2 {FILE3} {FILE4}", required=true)
+	@UnnamedArg(name="FILE1 FILE2 {FILE3} {FILE4}")
 	public void setFilename(String[] filenames) throws CommandArgumentException {
 		if (filenames.length < 2) {
 			throw new CommandArgumentException("You must specify at least 2 files.");
-
 		}
 		this.filenames = filenames;
 	}
@@ -44,7 +44,7 @@ public class Venn extends AbstractOutputCommand {
 		this.names = names.split(",");
 	}
 	
-	@Override
+	@Exec
 	public void exec() throws Exception {
 		
 		if (svg && filenames.length>4) {

@@ -1,9 +1,10 @@
 package io.compgen.txtutils.tab;
 
-import io.compgen.annotation.Command;
-import io.compgen.annotation.Option;
-import io.compgen.annotation.UnnamedArg;
-import io.compgen.impl.AbstractCommand;
+import io.compgen.cmdline.annotation.Command;
+import io.compgen.cmdline.annotation.Exec;
+import io.compgen.cmdline.annotation.Option;
+import io.compgen.cmdline.annotation.UnnamedArg;
+import io.compgen.cmdline.impl.AbstractCommand;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -50,7 +51,7 @@ public class TabView extends AbstractCommand {
 		this.scrollBack = val;
 	}
 	
-	@Override
+	@Exec
 	public void exec() throws Exception {
 		InputStream is = System.in;
 		if (!filename.equals("-")) {

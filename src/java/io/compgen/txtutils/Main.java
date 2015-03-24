@@ -1,6 +1,8 @@
 package io.compgen.txtutils;
 
-import io.compgen.MainBuilder;
+import io.compgen.cmdline.Help;
+import io.compgen.cmdline.License;
+import io.compgen.cmdline.MainBuilder;
 import io.compgen.txtutils.tab.TabLess;
 import io.compgen.txtutils.tab.TabView;
 import io.compgen.txtutils.text.Missing;
@@ -18,6 +20,7 @@ public class Main {
 		.setHelpFooter("http://compgen.io/txtutils\n"+MainBuilder.readFile("VERSION"))
 		.setCategoryOrder(new String[] {"tab", "text", "help"})
 		.addCommand(License.class)
+		.addCommand(Help.class)
 		.addCommand(TabView.class)
 		.addCommand(TabLess.class)
 		.addCommand(Overlap.class)

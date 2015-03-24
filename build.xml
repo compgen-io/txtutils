@@ -35,7 +35,7 @@
             <manifest>
                 <attribute name="Main-Class" value="io.compgen.txtutils.Main"/>
             </manifest>
-            <zipfileset src="${lib.dir}/cmdlinej-0.3-0ec1d1f.jar"/>
+            <zipfileset src="${lib.dir}/compgen-cmdline-0.4.1.jar"/>
 	        <zipfileset src="${lib.dir}/lanterna-2.1.7.jar"/>
 	        <fileset dir="${build.dir}/classes"/>
 	    </jarjar>
