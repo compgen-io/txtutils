@@ -21,6 +21,8 @@ public class Venn extends AbstractOutputCommand {
 	private String title = null;
 	private String[] names = null;
 	
+	private boolean ignoreCase = false;
+	
 	@UnnamedArg(name="FILE1 FILE2 {FILE3} {FILE4}")
 	public void setFilename(String[] filenames) throws CommandArgumentException {
 		if (filenames.length < 2) {
@@ -29,6 +31,11 @@ public class Venn extends AbstractOutputCommand {
 		this.filenames = filenames;
 	}
 
+	@Option(charName="i", name="ignore-case", desc="Ignore case")
+	public void setIgnoreCase(boolean ignoreCase) {
+		this.ignoreCase = ignoreCase;
+	}
+	
 	@Option(name="svg", desc="Output an SVG graphic")
 	public void setSVG(boolean svg) {
 		this.svg = svg;
@@ -63,7 +70,10 @@ public class Venn extends AbstractOutputCommand {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String s = line.replaceAll("\n$", "");
-				if (!vals.containsKey(line)) {
+				if (ignoreCase) {
+					s = s.toUpperCase();
+				}
+				if (!vals.containsKey(s)) {
 					vals.put(s, bitval);
 				} else {
 					vals.put(s, vals.get(s) | bitval);

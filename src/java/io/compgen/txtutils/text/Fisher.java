@@ -2,6 +2,7 @@ package io.compgen.txtutils.text;
 
 import io.compgen.cmdline.annotation.Command;
 import io.compgen.cmdline.annotation.Exec;
+import io.compgen.cmdline.annotation.Option;
 import io.compgen.cmdline.annotation.UnnamedArg;
 import io.compgen.cmdline.exceptions.CommandArgumentException;
 import io.compgen.cmdline.impl.AbstractCommand;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Command(name="fisher", desc="Calculate Fisher test 2x2 table for overlaps between two sets, correcting for background overlap", category="text")
 public class Fisher extends AbstractCommand {
 	private String[] filenames;
+	private boolean ignoreCase = false;
 
 	@UnnamedArg(name="Set1 Background1 Set2 Background2")
 	public void setFilename(String[] filenames) throws CommandArgumentException {
@@ -24,7 +26,12 @@ public class Fisher extends AbstractCommand {
 		}
 		this.filenames = filenames;
 	}
+	@Option(charName="i", name="ignore-case", desc="Ignore case")
+	public void setIgnoreCase(boolean ignoreCase) {
+		this.ignoreCase = ignoreCase;
+	}
 	
+
 	@Exec
 	public void exec() throws Exception {
 		Set<String> set1 = new HashSet<String>();
@@ -37,6 +44,9 @@ public class Fisher extends AbstractCommand {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String s = line.replaceAll("\n$", "");
+				if (ignoreCase) {
+					s = s.toUpperCase();
+				}
 				switch(i) {
 				case 0:
 					set1.add(s);

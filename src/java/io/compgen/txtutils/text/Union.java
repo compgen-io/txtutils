@@ -2,6 +2,7 @@ package io.compgen.txtutils.text;
 
 import io.compgen.cmdline.annotation.Command;
 import io.compgen.cmdline.annotation.Exec;
+import io.compgen.cmdline.annotation.Option;
 import io.compgen.cmdline.annotation.UnnamedArg;
 import io.compgen.cmdline.exceptions.CommandArgumentException;
 import io.compgen.cmdline.impl.AbstractCommand;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Command(name="union", desc="Merge together files", category="text")
 public class Union extends AbstractCommand {
 	private String[] filenames;
+	private boolean ignoreCase = false;
 
 	@UnnamedArg(name="FILE1 FILE2...")
 	public void setFilename(String[] filenames) throws CommandArgumentException {
@@ -23,7 +25,12 @@ public class Union extends AbstractCommand {
 		}
 		this.filenames = filenames;
 	}
+	@Option(charName="i", name="ignore-case", desc="Ignore case")
+	public void setIgnoreCase(boolean ignoreCase) {
+		this.ignoreCase = ignoreCase;
+	}
 	
+
 	@Exec
 	public void exec() throws Exception {
 		Set<String> known = new HashSet<String>();
@@ -33,6 +40,9 @@ public class Union extends AbstractCommand {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String s = line.replaceAll("\n$", "");
+				if (ignoreCase) {
+					s = s.toUpperCase();
+				}
 				known.add(s);
 			}
 			reader.close();
