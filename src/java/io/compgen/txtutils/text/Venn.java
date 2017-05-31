@@ -53,10 +53,12 @@ public class Venn extends AbstractOutputCommand {
 	
 	@Exec
 	public void exec() throws Exception {
+		if (filenames.length<2) {
+			throw new CommandArgumentException("Too few files! You must specify at least 2 files to process.");
+		}
 		
-		if (svg && filenames.length>4) {
-			throw new CommandArgumentException("Too many files! Only 2-4 files compatible with SVG output.");
-	
+		if (svg && filenames.length>5) {
+			throw new CommandArgumentException("Too many files! Only 2-5 files compatible with SVG output.");
 		}
 		
 		Map<String, Integer> vals = new HashMap<String, Integer>();
@@ -97,7 +99,7 @@ public class Venn extends AbstractOutputCommand {
 	}
 
 	private void outputSVG(int[] counts) throws IOException {
-		String codes = "ABCD";
+		String codes = "ABCDE";
 		Map<String, String> strings = new HashMap<String, String>();
 
 		for (int i=1; i<counts.length; i++) {
@@ -110,19 +112,26 @@ public class Venn extends AbstractOutputCommand {
 				bitval = bitval << 1;
 			}
 			strings.put(key, ""+counts[i]);
+			
+//			System.err.println(key + " => " + counts[i]);
+			
 		}
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("io/compgen/txtutils/text/Venn"+filenames.length+".svg")));
 		String line;
 		while ((line = reader.readLine()) != null) {
+			
 			line = line.replaceAll("\\$\\$TITLE\\$\\$", title);
-			line = line.replaceAll("\\$\\$LABELA\\$\\$", names != null ? names[0]: filenames[0]);
-			line = line.replaceAll("\\$\\$LABELB\\$\\$", names != null ? names[1]: filenames[1]);
+			line = line.replaceAll("\\$\\$LABELA\\$\\$", getName(0));
+			line = line.replaceAll("\\$\\$LABELB\\$\\$", getName(1));
 			if (filenames.length > 2) {
-				line = line.replaceAll("\\$\\$LABELC\\$\\$", names != null ? names[2]: filenames[2]);
+				line = line.replaceAll("\\$\\$LABELC\\$\\$", getName(2));
 			}
 			if (filenames.length > 3) {
-				line = line.replaceAll("\\$\\$LABELD\\$\\$", names != null ? names[3]: filenames[3]);
+				line = line.replaceAll("\\$\\$LABELD\\$\\$", getName(3));
+			}
+			if (filenames.length > 4) {
+				line = line.replaceAll("\\$\\$LABELE\\$\\$", getName(4));
 			}
 			for (String k: strings.keySet()) {
 				line = line.replaceAll("\\$\\$"+k+"\\$\\$", strings.get(k));
@@ -130,6 +139,10 @@ public class Venn extends AbstractOutputCommand {
 			out.write((line+"\n").getBytes());
 		}
 		reader.close();
+	}
+
+	private String getName(int i) {
+		return (names != null ? names[i]: filenames[i]);
 	}
 
 	private void outputCounts(int[] counts) {

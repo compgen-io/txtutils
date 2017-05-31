@@ -25,6 +25,7 @@
         <copy file="${src.dir}/images/Venn2.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
         <copy file="${src.dir}/images/Venn3.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
         <copy file="${src.dir}/images/Venn4.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
+        <copy file="${src.dir}/images/Venn5.svg" todir="${build.dir}/classes/io/compgen/txtutils/text"/>
         <delete file="${build.dir}/classes/VERSION"/>
  		<echo file="${build.dir}/classes/VERSION" message="${ant.project.name}-${version}-${repository.version}"/>
 
